@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Crackstation
+  description: |-
+     This library accepts strings encrypted by SHA-1 or SHA-256  as input and returns a decrypted string as output. It decrypts strings encrypted using SHA-1 or SHA-256. The length of the string can be upto 3 characters and it decrypts all possible combinations from the list matching the regular expression - [A-Za-z0-9?!]{1,3}. 
+  version: 1.0.0
+servers:
+  - url: https://5zqwgri5v9.execute-api.us-east-1.amazonaws.com/password/{password}
+tags:
+  - name: Decrypter
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /password/{shaHash}:
+    get:
+      tags:
+        - Decrypter
+      description: It decrypts strings encrypted using SHA-1 or SHA-256 which are upto 3 characters in length.
+      parameters:
+        - name: shaHash
+          in: path
+          description: sha-1 or sha-256 hash value
+          required: true
+          schema:
+            type: string
+            format: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shaHash'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/shaHash'
+        '404':
+          description: shaHash not found in lookup table or does not conform to regular expression - [A-Za-z0-9?!]{1,3}
+
+components:
+  schemas:
+    shaHash:
+      required:
+        - name
+        - photoUrls
+      type: object
+      properties:
+        e604ee0d6c8eee133603c1210a6abab06d17f796:
+          type: string
+          format: string
+          example: "3!i"
+        
+      xml:
+        name: shaHash
