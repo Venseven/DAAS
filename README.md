@@ -2,7 +2,8 @@
 
 Decrypter As a Service is an application which can decrypt strings up to 3 characters and matching the regular expression - [A-Za-z0-9?!]{1,3}. It accepts strings encrypted using SHA-1 or SHA-256.
 <hr>
-![My animated logo](architecture_diagram.jpeg)
+<!-- ![My animated logo](architecture_diagram.jpeg) -->
+<img src="architecture_diagram.jpeg" alt="Alt text" title="Optional title">
 ### *OVERVIEW*
 The application accepts strings encrypted by SHA-1 or SHA-256 as input and returns a decrypted string as output. It is implemented as a service with the help of aws. The AWS services used are - API Gateway, Lambda, S3.
 
